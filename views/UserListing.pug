@@ -1,0 +1,33 @@
+html
+    head
+        title 
+    body
+        table(style='width:100%', border='1')
+            tr
+                th id
+                th Name
+                th Email
+                th Age
+
+            if userList
+                each User in userList.userCollection
+                    tr
+                        td= User.id
+                        td= User.name
+                        td= User.email
+                        td= User.age
+                        td 
+                            form(action=`/edit/${User.id}`)
+                                button Edit
+                        td
+                            form(action=`/delete/${User.id}` method="post")
+                                button Delete
+                            
+
+
+            else
+                p no users
+
+        form(action='/' method='post')
+            button(type="submit") Back to Home
+        
